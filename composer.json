@@ -1,0 +1,36 @@
+{
+    "name": "bydls/pays",
+    "description": "支付类包",
+    "type": "library",
+    "require": {
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "^7.1",
+        "monolog/monolog": "^2.0",
+        "symfony/event-dispatcher": "^5.2",
+        "bydls/utils": "^1.0",
+        "symfony/http-foundation": "^5.2"
+    },
+    "require-dev": {
+        "php": ">=7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hebinghua",
+            "email": "944870269@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "bydls\\pays\\": "src/",
+            "bydls\\pays\\Controllers\\": "src/Controllers/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+}
