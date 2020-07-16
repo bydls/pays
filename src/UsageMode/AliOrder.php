@@ -22,18 +22,60 @@ class AliOrder
         $this->trade_no=$trade_no;
     }
 
-    /**查询订单
-     * @return \bydls\Utils\Collection  订单信息
-     * @throws \bydls\pays\Pay\Exceptions\GatewayException
-     * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
-     * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
-     * @throws \bydls\pays\Pay\Exceptions\ResultException
-     */
 
-    public function getWxPCPayResult()
+    /**查询订单
+     * @return \bydls\Utils\Collection
+     * @throws \bydls\pays\Pay\Exceptions\GatewayException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
+     * @author: hbh
+     * @Time: 2020/7/16   15:32
+     */
+    public function getAliPCPayResult()
     {
         $pay = Pay::ali(AliConfig::ali_config())->find($this->trade_no);
         return $pay;
     }
 
+    /**撤单
+     * @return \bydls\Utils\Collection
+     * @throws \bydls\pays\Pay\Exceptions\GatewayException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
+     * @author: hbh
+     * @Time: 2020/7/16   15:43
+     */
+    public function getAliCancelResult()
+    {
+        $pay = Pay::ali(AliConfig::ali_config())->cancel($this->trade_no);
+        return $pay;
+    }
+
+    /**关闭交易
+     * @return \bydls\Utils\Collection
+     * @throws \bydls\pays\Pay\Exceptions\GatewayException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
+     * @author: hbh
+     * @Time: 2020/7/16   16:06
+     */
+    public function getAliCloseResult()
+    {
+        $pay = Pay::ali(AliConfig::ali_config())->close($this->trade_no);
+        return $pay;
+    }
+
+    /**转账结果查询
+     * @return \bydls\Utils\Collection
+     * @throws \bydls\pays\Pay\Exceptions\GatewayException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
+     * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
+     * @author: hbh
+     * @Time: 2020/7/16   16:13
+     */
+    public function getAliRransferResult()
+    {
+        $pay = Pay::ali(AliConfig::ali_config())->find($this->trade_no,'transfer');
+        return $pay;
+    }
 }

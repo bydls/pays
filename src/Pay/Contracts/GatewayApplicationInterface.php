@@ -26,12 +26,12 @@ interface GatewayApplicationInterface
     public function find(String $order, string $type);
 
     /**退款
-     * @param String $order
+     * @param array $order
      * @return  Collection|Response
      * @author: hbh
      * @Time: 2020/7/13   17:10
      */
-    public function refund(String $order);
+    public function refund(array $order);
 
     /**撤销订单接口
      * @param String $order

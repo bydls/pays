@@ -6,7 +6,7 @@ use Exception;
 use bydls\pays\Pay\Events;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\Gateways\Ali;
-use bydls\pays\Log\Logger;
+use bydls\pays\Log\Log;
 use bydls\Utils\Collection;
 use bydls\pays\Pay\Config\Config;
 use bydls\Utils\Str;
@@ -158,7 +158,7 @@ class Support
 
         $sign = base64_encode($sign);
 
-        Logger::debug('Ali Generate Sign', [$params, $sign]);
+        Log::debug('Ali Generate Sign', [$params, $sign]);
 
         if (is_resource($privateKey)) {
             openssl_free_key($privateKey);
@@ -226,7 +226,7 @@ class Support
             }
         }
 
-        Logger::debug('Ali Generate Sign Content Before Trim', [$data, $stringToBeSigned]);
+        Log::debug('Ali Generate Sign Content Before Trim', [$data, $stringToBeSigned]);
 
         return trim($stringToBeSigned, '&');
     }
@@ -302,7 +302,7 @@ class Support
             $issuer_arr[] = $key . '=' . $val;
         }
         $issuer = implode(',', array_reverse($issuer_arr));
-        Logger::debug('getCertSN:', [$certPath, $issuer, $certdata['serialNumber']]);
+        Log::debug('getCertSN:', [$certPath, $issuer, $certdata['serialNumber']]);
 
         return md5($issuer . $certdata['serialNumber']);
     }

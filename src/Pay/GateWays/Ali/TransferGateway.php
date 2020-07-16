@@ -10,7 +10,7 @@ use bydls\Utils\Collection;
 class TransferGateway extends Gateway
 {
 
-    /**单笔转账
+    /**单笔转账 这个有点繁琐
      * @param string $endpoint
      * @param array $payload
      * @return Collection

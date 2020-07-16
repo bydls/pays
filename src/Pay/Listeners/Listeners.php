@@ -9,7 +9,7 @@ namespace bydls\pays\Pay\Listeners;
 
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use bydls\pays\Log\Logger;
+use bydls\pays\Log\Log;
 use bydls\pays\Pay\Events;
 
 class LogSubscriber implements EventSubscriberInterface
@@ -51,7 +51,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writePayStartingLog(Events\PayStarting $event)
     {
-        Logger::debug("Starting To {$event->driver}", [$event->gateway, $event->params]);
+        Log::debug("Starting To {$event->driver}", [$event->gateway, $event->params]);
     }
 
     /**支付结束后监听
@@ -61,7 +61,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writePayStartedLog(Events\PayStarted $event)
     {
-        Logger::info("{$event->driver} {$event->gateway} Has Started", [$event->endpoint, $event->payload]);
+        Log::info("{$event->driver} {$event->gateway} Has Started", [$event->endpoint, $event->payload]);
     }
 
     /**Api 请求前抛出事件 监听
@@ -71,7 +71,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writeApiRequestingLog(Events\ApiRequesting $event)
     {
-        Logger::debug("Requesting To {$event->driver} Api", [$event->endpoint, $event->payload]);
+        Log::debug("Requesting To {$event->driver} Api", [$event->endpoint, $event->payload]);
     }
 
     /**请求 API 之后的事件 监听
@@ -81,7 +81,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writeApiRequestedLog(Events\ApiRequested $event)
     {
-        Logger::debug("Result Of {$event->driver} Api", $event->result);
+        Log::debug("Result Of {$event->driver} Api", $event->result);
     }
 
     /**签名异常 监听
@@ -91,7 +91,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writeSignFailedLog(Events\SignFailed $event)
     {
-        Logger::warning("{$event->driver} Sign Verify FAILED", $event->data);
+        Log::warning("{$event->driver} Sign Verify FAILED", $event->data);
     }
 
     /**第三方异步请求监听
@@ -101,7 +101,7 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writeNotifyReceivedLog(Events\NotifyReceived $event)
     {
-        Logger::info("Received {$event->driver} Request", $event->data);
+        Log::info("Received {$event->driver} Request", $event->data);
     }
 
     /**调用 接口类型 监听
@@ -111,6 +111,6 @@ class LogSubscriber implements EventSubscriberInterface
      */
     public function writeMethodCalledLog(Events\MethodCalled $event)
     {
-        Logger::info("{$event->driver} {$event->gateway} Method Has Called", [$event->endpoint, $event->payload]);
+        Log::info("{$event->driver} {$event->gateway} Method Has Called", [$event->endpoint, $event->payload]);
     }
 }

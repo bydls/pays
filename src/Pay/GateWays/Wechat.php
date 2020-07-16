@@ -22,7 +22,8 @@ use bydls\pays\Pay\Gateways\Wechat\Support;
 use bydls\Utils\CodeUtil;
 use bydls\Utils\Str;
 use bydls\Utils\Collection;
-use bydls\pays\Log\Logger;
+use bydls\pays\Log\Log;
+use bydls\pays\Pay\Config\Config;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @method Response         app(array $config)          APP 支付
  * @method Collection       groupRedpack(array $config) 分裂红包
- * @method Collection       miniapp(array $config)      小程序支付
+ * @method Collection       mini(array $config)      小程序支付
  * @method Collection       mp(array $config)           公众号支付
  * @method Collection       pos(array $config)          刷卡支付
  * @method Collection       redpack(array $config)      普通红包
@@ -274,7 +275,7 @@ class Wechat implements GatewayApplicationInterface
             $data = array_merge(Support::fromXml($decrypt_data), $data);
         }
 
-        Logger::debug('Resolved The Received Wechat Request Data', $data);
+        Log::debug('Resolved The Received Wechat Request Data', $data);
 
         if ($refund || Support::generateSign($data) === $data['sign']) {
             return new Collection($data);

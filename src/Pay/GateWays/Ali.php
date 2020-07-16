@@ -19,6 +19,7 @@ use bydls\pays\Pay\Exceptions\InvalidConfigException;
 use bydls\pays\Pay\Exceptions\InvalidGatewayException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
 use bydls\pays\Pay\Gateways\Ali\Support;
+use bydls\pays\Pay\Config\Config;
 use bydls\Utils\Collection;
 
 use bydls\Utils\Str;
@@ -274,19 +275,20 @@ class Ali implements GatewayApplicationInterface
         return Support::requestApi($this->payload);
     }
 
+
     /**退款
-     * @param String $order
+     * @param array $order
      * @return Collection
      * @throws GatewayException
      * @throws InvalidConfigException
      * @throws InvalidSignException
      * @author: hbh
-     * @Time: 2020/7/15   11:36
+     * @Time: 2020/7/16   15:48
      */
-    public function refund(String $order): Collection
+    public function refund(array $order): Collection
     {
         $this->payload['method'] = 'alipay.trade.refund';
-        $this->payload['biz_content'] = json_encode(['out_trade_no' => $order]);
+        $this->payload['biz_content'] = json_encode( $order);
         $this->payload['sign'] = Support::generateSign($this->payload);
 
         Events::dispatch(new Events\MethodCalled('Ali', 'Refund', $this->gateway, $this->payload));
@@ -294,7 +296,7 @@ class Ali implements GatewayApplicationInterface
         return Support::requestApi($this->payload);
     }
 
-    /**撤单
+    /**撤单 如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户
      * @param String $order
      * @return Collection
      * @throws GatewayException

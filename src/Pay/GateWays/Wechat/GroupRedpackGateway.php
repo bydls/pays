@@ -13,7 +13,7 @@ use bydls\Utils\Collection;
 class GroupRedpackGateway extends Gateway
 {
 
-    /**裂变红包
+    /**裂变红包 一次可以发放一组红包。首先领取的用户为种子用户，种子用户领取一组红包当中的一个，并可以通过社交分享将剩下的红包给其他用户
      * @param string $endpoint
      * @param array $payload
      * @return Collection

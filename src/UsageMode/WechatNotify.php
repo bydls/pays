@@ -7,7 +7,6 @@
 
 namespace bydls\pays\UsageMode;
 
-use bydls\pays\Log\Logger;
 use bydls\pays\Pay\Pay;
 
 class WechatNotify

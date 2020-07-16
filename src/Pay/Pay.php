@@ -14,7 +14,7 @@ use bydls\pays\Pay\Gateways\Wechat;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\Listeners\LogSubscriber;
 use bydls\pays\Log\Logger;
-
+use bydls\pays\Pay\Config\Config;
 
 /**
  * @method static Ali ali(array $config) 支付宝
@@ -27,7 +27,7 @@ class Pay
 
     public function __construct(array $config)
     {
-        $this->config = $config;
+        $this->config = new Config($config);
         $this->registerLogService();
         $this->registerEventService();
     }
@@ -87,7 +87,7 @@ class Pay
         $logger = new Logger();
         $logger->setConfig($config);
 
-        Logger::setLogger($logger);
+        $logger->setLogger($logger);
     }
 
     /**

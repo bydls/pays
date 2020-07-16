@@ -12,7 +12,7 @@ use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
 use bydls\pays\Pay\Gateways\Wechat;
-use bydls\pays\Log\Logger;
+use bydls\pays\Log\Log;
 use bydls\Utils\Collection;
 use bydls\pays\Pay\Config\Config;
 use bydls\pays\Traits\HasHttpRequest;
@@ -212,7 +212,7 @@ class Support
 
         $string = md5(self::getSignContent($data).'&key='.$key);
 
-        Logger::debug('Wechat Generate Sign Before UPPER', [$data, $string]);
+        Log::debug('Wechat Generate Sign Before UPPER', [$data, $string]);
 
         return strtoupper($string);
     }
@@ -231,7 +231,7 @@ class Support
             $buff .= ('sign' != $k && '' != $v && !is_array($v)) ? $k.'='.$v.'&' : '';
         }
 
-        Logger::debug('Wechat Generate Sign Content Before Trim', [$data, $buff]);
+        Log::debug('Wechat Generate Sign Content Before Trim', [$data, $buff]);
 
         return trim($buff, '&');
     }

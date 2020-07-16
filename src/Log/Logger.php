@@ -55,21 +55,12 @@ class Logger
      *
      * @var array
      */
-    protected $config = [
-        'debug' => [
-            'file' => null,
-            'identify' => 'bydls.pay',
-            'level' => BaseLogger::DEBUG,
-            'type' => 'daily',
-            'max_files' => 30
-        ],
-        'info' => [
-            'file' => null,
-            'identify' => 'bydls.pay',
-            'level' => BaseLogger::INFO,
-            'type' => 'daily',
-            'max_files' => 30
-        ],
+    protected $config=[
+        'file' => null,
+        'identify' => 'bydls.pay',
+        'level' => BaseLogger::DEBUG,
+        'type' => 'daily',
+        'max_files' => 30
     ];
 
 
@@ -83,12 +74,11 @@ class Logger
      */
     public function __call($method, $args): void
     {
-        $this->config = $this->config[$method] ?? $this->config['debug'];
         call_user_func_array([$this->getLogger(), $method], $args);
     }
 
     /**set logger
-     * @param LoggerInterface $logger
+     * @param  $logger
      * @return Logger
      */
     public function setLogger(LoggerInterface $logger): Logger

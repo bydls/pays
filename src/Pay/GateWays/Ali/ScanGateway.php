@@ -37,6 +37,6 @@ class ScanGateway extends Gateway
     }
     protected function getProductCode(): string
     {
-        return '';
+        return 'FACE_TO_FACE_PAYMENT';
     }
 }

@@ -46,7 +46,7 @@ class WechatConfig
     public static function  wx_pc_pay(){
         $config=self::wx_config();
         $config['log']=[
-            'file' => '../storage/logs/pay/wx/pay.log',
+            'file' => '../storage/logs/pay/wx_pc/pay.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
@@ -60,6 +60,22 @@ class WechatConfig
      * @Time: 2020/6/29   15:27
      */
     public static function  wx_pc_notify(){
+        $config=self::wx_config();
+        $config['log']=[
+            'file' => '../storage/logs/pay/wx/notify.log',
+            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
+            'type' => 'daily', // optional, 可选 daily.
+            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
+        ];
+        return $config;
+    }
+
+    /**微信h5端的支付配置
+     * @return array
+     * @author: hbh
+     * @Time: 2020/7/16   17:32
+     */
+    public static function  wx_h5_pay(){
         $config=self::wx_config();
         $config['log']=[
             'file' => '../storage/logs/pay/wx/notify.log',
