@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-
+use bydls\pays\AliConfig;
 class AliPay
 {
     //要支付的金额 单位：元
@@ -23,10 +23,10 @@ class AliPay
     private $trade_no;
 
 
-    public function __construct($total_amount,$trade_no,$subject)
+    public function __construct($trade_no,$total_amount,$subject)
     {
         $this->total_amount=$total_amount;
-        $this->trade_no=$trade_no;
+        $this->trade_no= $trade_no;
         $this->subject=$subject;
     }
 
@@ -36,7 +36,7 @@ class AliPay
      * @author: hbh
      * @Time: 2020/7/16   15:29
      */
-    public function pc()
+    public function web()
     {
         $order = [
             'out_trade_no' =>$this->trade_no,
@@ -52,7 +52,7 @@ class AliPay
      * @author: hbh
      * @Time: 2020/7/16   16:29
      */
-    public function h5()
+    public function wap()
     {
         $order = [
             'out_trade_no' =>$this->trade_no,
@@ -75,7 +75,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_h5_pay())->app($order);
+        $pay = Pay::Ali(AliConfig::ali_app_pay())->app($order);
         return $pay->send();
     }
 
@@ -91,7 +91,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_h5_pay())->app($order);
+        $pay = Pay::Ali(AliConfig::ali_scan_pay())->app($order);
         Log::info('【支付宝扫码支付获取支付二维吗】', $pay->all());
         if($pay->code=='10000'&&$pay->msg=='Success'){
             return $pay->code_url;
@@ -100,9 +100,9 @@ class AliPay
     }
 
     /**小程序支付
-     * @return bool
+     * @return \bydls\Utils\Collection|mixed|null
      * @author: hbh
-     * @Time: 2020/7/16   16:40
+     * @Time: 2020/7/17   13:55
      */
     public function mini(){
         $order = [
@@ -110,10 +110,10 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_h5_pay())->mini($order);
+        $pay = Pay::Ali(AliConfig::ali_mini_pay())->mini($order);
         if($pay->code=='10000'&&$pay->msg=='Success'){
-            return true;
+            return $pay;
         }
-        return false;
+        return $pay->msg??null;
     }
 }

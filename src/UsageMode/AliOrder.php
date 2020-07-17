@@ -9,7 +9,7 @@ namespace bydls\pays\UsageMode;
 
 
 use bydls\pays\Pay\Pay;
-
+use bydls\pays\AliConfig;
 class AliOrder
 {
 
@@ -31,7 +31,7 @@ class AliOrder
      * @author: hbh
      * @Time: 2020/7/16   15:32
      */
-    public function getAliPCPayResult()
+    public function find()
     {
         $pay = Pay::ali(AliConfig::ali_config())->find($this->trade_no);
         return $pay;
@@ -45,7 +45,7 @@ class AliOrder
      * @author: hbh
      * @Time: 2020/7/16   15:43
      */
-    public function getAliCancelResult()
+    public function cancel()
     {
         $pay = Pay::ali(AliConfig::ali_config())->cancel($this->trade_no);
         return $pay;
@@ -59,7 +59,7 @@ class AliOrder
      * @author: hbh
      * @Time: 2020/7/16   16:06
      */
-    public function getAliCloseResult()
+    public function close()
     {
         $pay = Pay::ali(AliConfig::ali_config())->close($this->trade_no);
         return $pay;
@@ -73,7 +73,7 @@ class AliOrder
      * @author: hbh
      * @Time: 2020/7/16   16:13
      */
-    public function getAliRransferResult()
+    public function findTransfer()
     {
         $pay = Pay::ali(AliConfig::ali_config())->find($this->trade_no,'transfer');
         return $pay;

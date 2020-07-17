@@ -10,27 +10,25 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-use bydls\Utils\Str;
-
+use bydls\pays\WechatConfig;
 
 class WechatPay
 {
     //要支付的金额
     private $total_fee;
 
-    private $body='充值';
+    private $body = '充值';
 
     //交易订单号
     private $trade_no;
 
 
-    public function __construct($total_fee,$trade_no,$body)
+    public function __construct($total_fee, $trade_no, $body)
     {
-        $this->total_fee=$total_fee*100;
-        $this->trade_no=$trade_no;
-        $this->body=$body;
+        $this->total_fee = $total_fee * 100;
+        $this->trade_no = $trade_no;
+        $this->body = $body;
     }
-
 
 
     /**获取微信支付二维码
@@ -41,16 +39,16 @@ class WechatPay
     public function scan()
     {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_fee' =>  $this->total_fee, // **单位：分**
+            'out_trade_no' => $this->trade_no,
+            'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_pc_pay())->scan($order);
+        $pay = Pay::wechat(WechatConfig::wx_scan_pay())->scan($order);
         Log::info('【微信扫码支付获取支付二维吗】', $pay->all());
-        if($pay->return_code=='SUCCESS'&&$pay->return_msg=='OK'){
+        if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay->code_url;
         }
-        return '';
+        return $pay->err_code_des ?? '';
     }
 
     /**公众号支付
@@ -61,52 +59,56 @@ class WechatPay
 
     /**公众号支付
      * @param $openid
-     * @return \bydls\Utils\Collection|null
+     * @return \bydls\Utils\Collection|null|String
      * @author: hbh
      * @Time: 2020/7/16   17:14
      */
-    public function  mp($openid){
+    public function mp($openid)
+    {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_fee' =>  $this->total_fee, // **单位：分**
+            'out_trade_no' => $this->trade_no,
+            'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
             'openid' => $openid,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_h5_pay())->mp($order);
-        if($pay->return_code=='SUCCESS'&&$pay->return_msg=='OK'){
+        $pay = Pay::wechat(WechatConfig::wx_mp_pay())->mp($order);
+        if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }
-        return null;
+        return $pay->err_code_des ?? null;
     }
 
     /**小程序支付
      * @param $openid
-     * @return \bydls\Utils\Collection|null
+     * @return \bydls\Utils\Collection|null|String
      * @author: hbh
      * @Time: 2020/7/16   17:18
      */
-    public function  mini($openid){
+    public function mini($openid)
+    {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_fee' =>  $this->total_fee, // **单位：分**
+            'out_trade_no' => $this->trade_no,
+            'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
             'openid' => $openid,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_h5_pay())->mini($order);
-        if($pay->return_code=='SUCCESS'&&$pay->return_msg=='OK'){
+        $pay = Pay::wechat(WechatConfig::wx_mini_pay())->mini($order);
+        if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }
-        return null;
+        return $pay->err_code_des ?? null;
     }
+
     /**手机浏览器支付
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @author: hbh
      * @Time: 2020/7/16   17:16
      */
-    public function  h5(){
+    public function wap()
+    {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_fee' =>  $this->total_fee, // **单位：分**
+            'out_trade_no' => $this->trade_no,
+            'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
         $pay = Pay::wechat(WechatConfig::wx_h5_pay())->wap($order);
@@ -119,13 +121,14 @@ class WechatPay
      * @author: hbh
      * @Time: 2020/7/16   17:17
      */
-    public function  app(){
+    public function app()
+    {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_fee' =>  $this->total_fee, // **单位：分**
+            'out_trade_no' => $this->trade_no,
+            'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_h5_pay())->app($order);
+        $pay = Pay::wechat(WechatConfig::wx_app_pay())->app($order);
 
         return $pay->send();
     }

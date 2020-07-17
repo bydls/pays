@@ -10,13 +10,14 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Pay\Pay;
 use bydls\pays\Log\Log;
+use bydls\pays\AliConfig;
 
 class AliNotify
 {
 
     public function aliPcNotify()
     {
-        $pay = Pay::Ali(AliConfig::ali_pc_notify());
+        $pay = Pay::Ali(AliConfig::ali_notify());
         $data=null;
         try{
             $data = $pay->verify(); // 获取验签后的结果

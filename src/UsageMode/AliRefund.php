@@ -10,6 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
+use bydls\pays\AliConfig;
 
 class AliRefund
 {
@@ -20,39 +21,38 @@ class AliRefund
     private $out_request_no;
 
     //交易订单号
-    private $out_out_trade_no;
+    private $out_trade_no;
 
 
-    public function __construct($out_out_trade_no,$out_request_no,$refund_amount)
+    public function __construct($out_trade_no, $refund_amount, $out_request_no)
     {
-        $this->refund_amount=$refund_amount;
-        $this->out_out_trade_no=$out_out_trade_no;
-        $this->out_request_no=$out_request_no;
+        $this->refund_amount = $refund_amount;
+        $this->out_trade_no = $out_trade_no;
+        $this->out_request_no = $out_request_no;
     }
 
 
-
     /**支付宝退款
-     * @return mixed|string
+     * @return \bydls\Utils\Collection|mixed|null
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
      * @author: hbh
-     * @Time: 2020/7/16   16:02
+     * @Time: 2020/7/17   14:16
      */
     public function refund()
     {
         $order = [
-            'out_out_trade_no' =>$this->out_trade_no,
-            'refund_amount' =>  $this->refund_amount, // **单位：元
+            'out_trade_no' => $this->out_trade_no,
+            'refund_amount' => $this->refund_amount, // **单位：元
             'out_request_no' => $this->out_request_no,
         ];
-        $pay = Pay::Ali(AliConfig::ali_pc_pay())->refund($order);
+        $pay = Pay::Ali(AliConfig::ali_refund())->refund($order);
         Log::info('【支付宝退款信息】', $pay->all());
-        if($pay->code=='10000'&&$pay->msg=='Success'){
-            return $pay->code_url;
+        if ($pay->code == '10000' && $pay->msg == 'Success') {
+            return $pay;
         }
-        return '';
+        return $pay->msg ?? null;
     }
 
     /**退款查询
@@ -63,16 +63,16 @@ class AliRefund
      * @author: hbh
      * @Time: 2020/7/16   16:12
      */
-    public function getAliRefundResult()
+    public function findRefund()
     {
         $order = [
-            'out_out_trade_no' =>$this->out_trade_no,
+            'out_trade_no' => $this->out_trade_no,
             'out_request_no' => $this->out_request_no,
         ];
-        $pay = Pay::Ali(AliConfig::ali_pc_pay())->find($order,'refund');
-        if($pay->code=='10000'&&$pay->msg=='Success'){
+        $pay = Pay::Ali(AliConfig::ali_refund())->find($order, 'refund');
+        if ($pay->code == '10000' && $pay->msg == 'Success') {
             return $pay;
         }
-        return  null;
+        return $pay->msg ?? null;
     }
 }
