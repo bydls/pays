@@ -1,6 +1,6 @@
 <?php
 /**
- * @Desc:
+ * @Desc:支付类方法
  * @author: hbh
  * @Time: 2020/7/17   11:49
  */
