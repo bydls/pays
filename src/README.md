@@ -1,14 +1,10 @@
-#支付类包 现只支持 支付宝和微信
+！！！需要添加请求的参数，只需修改 UsageMode 中对应的文件即可
 
-###安装： composer require bydls/pays
 
-###配置：
-     AliConfig.php  支付宝的各种配置
-     WechatConfig.php  微信的各种配置
+Log/  日志文件配置
+Pay/ 支付包核心文件
+UsageMode/ 根据现有的微信和支付宝提供的文档,组装的一些满足请求条件方法，可根据当下需要修改
 
-###目前支持的方法：Pay.php 文件中的 
-        调用：
-        use bydls/pays;
-        
-        支付宝web端支付：pays::ali_web_pay('订单号', 0.01, '充值');
-             
+AliConfig.php  支付宝支付的各种配置
+WechatConfig.php  微信支付的各种配置
+Pay.php 暂时支付的可供调用的方法
