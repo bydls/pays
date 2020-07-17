@@ -5,7 +5,7 @@
  * @Time: 2020/7/17   11:49
  */
 
-namespace bydls\pays\UsageMode;
+namespace bydls\pays;
 
 
 use bydls\Utils\Collection;
