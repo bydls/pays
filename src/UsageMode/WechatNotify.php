@@ -19,6 +19,7 @@ class WechatNotify
         $data = null;
         try {
             $data = $pay->verify(); // 是的，验签就这么简单！
+            Log::info('【微信支付回调数据】', $data->all());
         } catch (\Exception $e) {
             // $e->getMessage();
         }

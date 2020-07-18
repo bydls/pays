@@ -7,8 +7,6 @@
 
 namespace bydls\pays\UsageMode;
 
-
-use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
 use bydls\pays\Config;
 
@@ -53,7 +51,6 @@ class WechatRefund
             'out_refund_no' => $this->out_refund_no,
         ];
         $pay = Pay::Wechat(Config::Wechat()->wx_refund())->refund($order);
-        Log::info('【微信退款信息】', $pay->all());
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }

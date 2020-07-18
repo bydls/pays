@@ -9,7 +9,6 @@ namespace bydls\pays\UsageMode;
 
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\Log\Log;
 use bydls\pays\Config;
 
 class AliNotify
@@ -21,7 +20,6 @@ class AliNotify
         $data=null;
         try{
             $data = $pay->verify(); // 获取验签后的结果
-            Log::info('【支付宝回调数据】', $data->all());
 
             //根据返回的结果处理自己的业务
 

@@ -7,8 +7,6 @@
 
 namespace bydls\pays\UsageMode;
 
-
-use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
 use bydls\pays\Config;
 class AliPay
@@ -92,7 +90,6 @@ class AliPay
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->app($order);
-        Log::info('【支付宝扫码支付获取支付二维吗】', $pay->all());
         if($pay->code=='10000'&&$pay->msg=='Success'){
             return $pay->code_url;
         }

@@ -8,7 +8,6 @@
 namespace bydls\pays\UsageMode;
 
 
-use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
 use bydls\pays\Config;
 
@@ -44,7 +43,6 @@ class WechatPay
             'body' => $this->body,
         ];
         $pay = Pay::wechat(Config::Wechat()->wx_scan_pay())->scan($order);
-        Log::info('【微信扫码支付获取支付二维吗】', $pay->all());
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay->code_url;
         }

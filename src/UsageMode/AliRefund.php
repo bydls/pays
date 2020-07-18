@@ -7,8 +7,6 @@
 
 namespace bydls\pays\UsageMode;
 
-
-use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
 use bydls\pays\Config;
 
@@ -48,7 +46,6 @@ class AliRefund
             'out_request_no' => $this->out_request_no,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_refund())->refund($order);
-        Log::info('【支付宝退款信息】', $pay->all());
         if ($pay->code == '10000' && $pay->msg == 'Success') {
             return $pay;
         }
