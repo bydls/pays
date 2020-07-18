@@ -2,83 +2,120 @@
 /**
  * @Desc:
  * @author: hbh
- * @Time: 2020/7/14   18:02
+ * @Time: 2020/7/15   14:53
  */
 
-namespace bydls\pays;
+namespace bydls\pays\UsageMode;
 
 
-class WechatConfig
+
+class AliConfig
 {
-
-
-    public static function wx_config(){
+    public static function ali_config()
+    {
         return [
-            'appid' => WECHAT_APPID, // APP APPID
-            'app_id' => WECHAT_APP_ID, // 公众号 APPID
-            'miniapp_id' => WECHAT_MINIAPP_ID, // 小程序 APPID
-            'mch_id' => WECHAT_MCH_ID,
-            'key' => WECHAT_KEY,
-      //      'notify_url' => 'https://'.env('API_DOMAIN').'/api/pay/wxscan/notify', //异步回调地址
-            'cert_client' => './cert/apiclient_cert.pem', // optional，退款等情况时用到
-            'cert_key' => './cert/apiclient_key.pem',// optional，退款等情况时用到
+            'app_id' => ALI_APP_ID,
+            'notify_url' => 'https://' . API_DOMAIN. '/api/pay/ali/notify',
+            'return_url' => 'https://' . ALI_RETURN_URL,
+            'ali_public_key' =>ALI_PUBLIC_KEY,// '这是支付宝的公钥'
+            'private_key' => ALI_PRIVATE_KEY,//这是自己的项目私钥',
 //            'log' => [ // optional
-//                'file' => '../storage/logs/pay/wx/wechat.log',
+//                'file' => '../storage/logs/pay/ali/ali.log',
 //                'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
 //                'type' => 'daily', // optional, 可选 daily.
-//                'max_file' => 30, // optional, 当 type 为 daily 时有效，默认 30 天
+//                'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
 //            ],
             'http' => [ // optional
                 'timeout' => 5.0,
                 'connect_timeout' => 5.0,
                 // 更多配置项请参考 [Guzzle](https://guzzle-cn.readthedocs.io/zh_CN/latest/request-options.html)
             ],
-            'mode' => 'normal', // optional, dev/hk;当为 `hk` 时，为香港 gateway。
+            'mode' => 'dev', // optional,设置此参数，将进入沙箱模式
         ];
     }
 
-    /**微信PC端的支付配置
+    /**支付宝PC端的支付配置
      * @return array
      * @author: hbh
      * @Time: 2020/6/29   15:27
      */
-    public static function  wx_scan_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_scan/.log',
+    public static function ali_pc_pay()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_pc/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
         return $config;
     }
 
-    /**微信PC端的支付回调配置
+    /**支付宝支付回调配置
      * @return array
      * @author: hbh
      * @Time: 2020/6/29   15:27
      */
-    public static function  wx_notify(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_notify/.log',
+    public static function ali_notify()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_notify/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
+        $config['notify_url'] = '异步回调地址';
+        $config['return_url'] = '同步回调地址';
         return $config;
     }
 
-    /**微信h5端的支付配置
+    /**支付宝H5支付配置
      * @return array
      * @author: hbh
-     * @Time: 2020/7/16   17:32
+     * @Time: 2020/7/16   16:27
      */
-    public static function  wx_h5_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_h5/.log',
+    public static function ali_h5_pay()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_h5/.log',
+            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
+            'type' => 'daily', // optional, 可选 daily.
+            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
+        ];
+        $config['notify_url'] = '异步回调地址';
+        $config['return_url'] = '同步回调地址';
+        return $config;
+    }
+
+    /**支付宝 APP支付配置
+     * @return array
+     * @author: hbh
+     * @Time: 2020/7/17   15:15
+     */
+    public static function ali_app_pay()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_app/.log',
+            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
+            'type' => 'daily', // optional, 可选 daily.
+            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
+        ];
+        $config['notify_url'] = '异步回调地址';
+        return $config;
+    }
+    /**支付宝小程序支付配置
+     * @return array
+     * @author: hbh
+     * @Time: 2020/7/16   16:27
+     */
+    public static function ali_mini_pay()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_mini/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
@@ -87,15 +124,16 @@ class WechatConfig
         return $config;
     }
 
-    /**微信 APP的支付配置
+    /**支付宝扫码配置
      * @return array
      * @author: hbh
-     * @Time: 2020/7/17   15:17
+     * @Time: 2020/7/17   15:12
      */
-    public static function  wx_app_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_app/.log',
+    public static function ali_scan_pay()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_scan/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
@@ -104,64 +142,16 @@ class WechatConfig
         return $config;
     }
 
-    /**小程序支付
+    /**支付宝退款配置
      * @return array
      * @author: hbh
-     * @Time: 2020/7/17   15:19
+     * @Time: 2020/7/16   16:27
      */
-    public static function  wx_mini_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_mini/.log',
-            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
-            'type' => 'daily', // optional, 可选 daily.
-            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
-        ];
-        $config['notify_url'] = '异步回调地址';
-        return $config;
-    }
-
-    /**微信公众号支付配置
-     * @return array
-     * @author: hbh
-     * @Time: 2020/7/17   15:20
-     */
-    public static function  wx_mp_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_mp/.log',
-            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
-            'type' => 'daily', // optional, 可选 daily.
-            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
-        ];
-        $config['notify_url'] = '异步回调地址';
-        return $config;
-    }
-    /**微信红包配置
-     * @return array
-     * @author: hbh
-     * @Time: 2020/7/17   10:25
-     */
-    public static function  wx_redpack_pay(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_redpack/.log',
-            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
-            'type' => 'daily', // optional, 可选 daily.
-            'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
-        ];
-        return $config;
-    }
-
-    /**微信退款配置
-     * @return mixed
-     * @author: hbh
-     * @Time: 2020/7/17   10:43
-     */
-    public static function  wx_refund(){
-        $config=self::wx_config();
-        $config['log']=[
-            'file' => '../storage/logs/pay/wx_refund/.log',
+    public static function ali_refund()
+    {
+        $config = self::ali_config();
+        $config['log'] = [
+            'file' => '../storage/logs/pay/ali_refund/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天

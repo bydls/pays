@@ -9,7 +9,7 @@ namespace bydls\pays\UsageMode;
 
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\Config;
 
 class WechatOrder
 {
@@ -35,7 +35,7 @@ class WechatOrder
      */
     public function find()
     {
-        $pay = Pay::wechat(WechatConfig::wx_config())->find($this->trade_no);
+        $pay = Pay::wechat(Config::Wechat()->wx_config())->find($this->trade_no);
         return $pay;
     }
 
@@ -50,7 +50,7 @@ class WechatOrder
      */
     public function cancel()
     {
-        $pay = Pay::wechat(WechatConfig::wx_config())->cancel($this->trade_no);
+        $pay = Pay::wechat(Config::Wechat()->wx_config())->cancel($this->trade_no);
         return $pay;
     }
 
@@ -66,7 +66,7 @@ class WechatOrder
      */
     public function close()
     {
-        $pay = Pay::wechat(WechatConfig::wx_config())->close($this->trade_no);
+        $pay = Pay::wechat(Config::Wechat()->wx_config())->close($this->trade_no);
         return $pay;
     }
 
@@ -81,7 +81,7 @@ class WechatOrder
      */
     public function findTransfer()
     {
-        $pay = Pay::wechat(WechatConfig::wx_config())->find($this->trade_no, 'transfer');
+        $pay = Pay::wechat(Config::Wechat()->wx_config())->find($this->trade_no, 'transfer');
         return $pay;
     }
 }

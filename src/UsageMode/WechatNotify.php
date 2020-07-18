@@ -8,14 +8,14 @@
 namespace bydls\pays\UsageMode;
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\Config;
 
 class WechatNotify
 {
 
     public function wxPcNotify()
     {
-        $pay = Pay::wechat(WechatConfig::wx_notify());
+        $pay = Pay::wechat(Config::Wechat()->wx_notify());
         $data = null;
         try {
             $data = $pay->verify(); // 是的，验签就这么简单！

@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\Config;
 
 class WechatRefund
 {
@@ -52,7 +52,7 @@ class WechatRefund
             'refund_fee' => $this->refund_fee, // **单位：元
             'out_refund_no' => $this->out_refund_no,
         ];
-        $pay = Pay::Wechat(WechatConfig::wx_refund())->refund($order);
+        $pay = Pay::Wechat(Config::Wechat()->wx_refund())->refund($order);
         Log::info('【微信退款信息】', $pay->all());
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
@@ -76,7 +76,7 @@ class WechatRefund
             'out_trade_no' => $this->out_trade_no,
             'out_refund_no' => $this->out_refund_no,
         ];
-        $pay = Pay::Wechat(WechatConfig::wx_refund())->find($order, 'refund');
+        $pay = Pay::Wechat(Config::Wechat()->wx_refund())->find($order, 'refund');
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }

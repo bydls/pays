@@ -9,7 +9,7 @@ namespace bydls\pays\UsageMode;
 
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\Config;
 
 class WechatRedpack
 {
@@ -64,7 +64,7 @@ class WechatRedpack
             'act_name' => $this->act_name,
             'remark' => $this->total_num,
         ];
-        $result = Pay::wechat(WechatConfig::wx_redpack_pay())->redpack($order);
+        $result = Pay::wechat(Config::Wechat()->wx_redpack_pay())->redpack($order);
         return $result;
     }
 
@@ -85,7 +85,7 @@ class WechatRedpack
             'act_name' => $this->act_name,
             'remark' => $this->total_num,
         ];
-        $result = Pay::wechat(WechatConfig::wx_redpack_pay())->groupRedpack($order);
+        $result = Pay::wechat(Config::Wechat()->wx_redpack_pay())->groupRedpack($order);
         return $result;
     }
 }

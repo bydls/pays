@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\Config;
 
 class WechatPay
 {
@@ -43,7 +43,7 @@ class WechatPay
             'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_scan_pay())->scan($order);
+        $pay = Pay::wechat(Config::Wechat()->wx_scan_pay())->scan($order);
         Log::info('【微信扫码支付获取支付二维吗】', $pay->all());
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay->code_url;
@@ -71,7 +71,7 @@ class WechatPay
             'body' => $this->body,
             'openid' => $openid,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_mp_pay())->mp($order);
+        $pay = Pay::wechat(Config::Wechat()->wx_mp_pay())->mp($order);
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }
@@ -92,7 +92,7 @@ class WechatPay
             'body' => $this->body,
             'openid' => $openid,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_mini_pay())->mini($order);
+        $pay = Pay::wechat(Config::Wechat()->wx_mini_pay())->mini($order);
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {
             return $pay;
         }
@@ -111,7 +111,7 @@ class WechatPay
             'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_h5_pay())->wap($order);
+        $pay = Pay::wechat(Config::Wechat()->wx_h5_pay())->wap($order);
 
         return $pay->send();
     }
@@ -128,7 +128,7 @@ class WechatPay
             'total_fee' => $this->total_fee, // **单位：分**
             'body' => $this->body,
         ];
-        $pay = Pay::wechat(WechatConfig::wx_app_pay())->app($order);
+        $pay = Pay::wechat(Config::Wechat()->wx_app_pay())->app($order);
 
         return $pay->send();
     }

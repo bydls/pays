@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-use bydls\pays\AliConfig;
+use bydls\pays\Config;
 class AliPay
 {
     //要支付的金额 单位：元
@@ -43,7 +43,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_pc_pay())->web($order);
+        $pay = Pay::Ali(Config::Ali()->ali_pc_pay())->web($order);
         return $pay->send();
     }
 
@@ -59,7 +59,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_h5_pay())->wap($order);
+        $pay = Pay::Ali(Config::Ali()->ali_h5_pay())->wap($order);
         return $pay->send();
     }
 
@@ -75,7 +75,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_app_pay())->app($order);
+        $pay = Pay::Ali(Config::Ali()->ali_app_pay())->app($order);
         return $pay->send();
     }
 
@@ -91,7 +91,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_scan_pay())->app($order);
+        $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->app($order);
         Log::info('【支付宝扫码支付获取支付二维吗】', $pay->all());
         if($pay->code=='10000'&&$pay->msg=='Success'){
             return $pay->code_url;
@@ -110,7 +110,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(AliConfig::ali_mini_pay())->mini($order);
+        $pay = Pay::Ali(Config::Ali()->ali_mini_pay())->mini($order);
         if($pay->code=='10000'&&$pay->msg=='Success'){
             return $pay;
         }
