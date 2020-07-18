@@ -5,7 +5,7 @@
  * @Time: 2020/7/15   14:53
  */
 
-namespace bydls\pays\config;
+namespace bydls\pays;
 
 
 class AliConfig
@@ -13,11 +13,11 @@ class AliConfig
     public static function ali_config()
     {
         return [
-            'app_id' => '2021001178671284',
-            'notify_url' => 'https://' . env('API_DOMAIN') . '/api/pay/ali/notify',
-            'return_url' => 'https://' . env('API_DOMAIN'),
-            'ali_public_key' => '这是支付宝的公钥',
-            'private_key' => '这是自己的项目私钥',
+            'app_id' => ALI_APP_ID,
+            'notify_url' => 'https://' . API_DOMAIN. '/api/pay/ali/notify',
+            'return_url' => 'https://' . API_DOMAIN,
+            'ali_public_key' =>ALI_PUBLIC_KEY,// '这是支付宝的公钥'
+            'private_key' => ALI_PRIVATE_KEY,//这是自己的项目私钥',
 //            'log' => [ // optional
 //                'file' => '../storage/logs/pay/ali/ali.log',
 //                'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug

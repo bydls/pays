@@ -5,7 +5,7 @@
  * @Time: 2020/7/14   18:02
  */
 
-namespace bydls\pays\config;
+namespace bydls\pays;
 
 
 class WechatConfig
@@ -14,11 +14,11 @@ class WechatConfig
 
     public static function wx_config(){
         return [
-            'appid' => 'wx166942e166283a4b9000', // APP APPID
-            'app_id' => 'wx13a8ee318e6ee9a3d000', // 公众号 APPID
-            'miniapp_id' => 'wx166942e166283a4b9000', // 小程序 APPID
-            'mch_id' => '1558987901',
-            'key' => '6e56d25d77d49d573fcf8d0d0c7dbff4',
+            'appid' => WECHAT_APPID, // APP APPID
+            'app_id' => WECHAT_APP_ID, // 公众号 APPID
+            'miniapp_id' => WECHAT_MINIAPP_ID, // 小程序 APPID
+            'mch_id' => WECHAT_MCH_ID,
+            'key' => WECHAT_KEY,
       //      'notify_url' => 'https://'.env('API_DOMAIN').'/api/pay/wxscan/notify', //异步回调地址
             'cert_client' => './cert/apiclient_cert.pem', // optional，退款等情况时用到
             'cert_key' => './cert/apiclient_key.pem',// optional，退款等情况时用到

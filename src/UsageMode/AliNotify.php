@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Pay\Pay;
 use bydls\pays\Log\Log;
-use bydls\pays\config\AliConfig;
+use bydls\pays\AliConfig;
 
 class AliNotify
 {

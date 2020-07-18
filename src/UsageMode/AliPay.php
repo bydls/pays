@@ -10,7 +10,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Pay;
-use bydls\pays\config\AliConfig;
+use bydls\pays\AliConfig;
 class AliPay
 {
     //要支付的金额 单位：元
