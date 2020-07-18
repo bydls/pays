@@ -14,9 +14,9 @@ class WechatConfig
 
     public static function wx_config(){
         return [
-            'appid' => 'wx166942e166283a4b9', // APP APPID
-            'app_id' => 'wx13a8ee318e6ee9a3d', // 公众号 APPID
-            'miniapp_id' => 'wx166942e166283a4b9', // 小程序 APPID
+            'appid' => 'wx166942e166283a4b9000', // APP APPID
+            'app_id' => 'wx13a8ee318e6ee9a3d000', // 公众号 APPID
+            'miniapp_id' => 'wx166942e166283a4b9000', // 小程序 APPID
             'mch_id' => '1558987901',
             'key' => '6e56d25d77d49d573fcf8d0d0c7dbff4',
       //      'notify_url' => 'https://'.env('API_DOMAIN').'/api/pay/wxscan/notify', //异步回调地址
