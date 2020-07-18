@@ -12,9 +12,11 @@ use bydls\Utils\Collection;
 use bydls\pays\UsageMode\AliPay;
 use bydls\pays\UsageMode\AliRefund;
 use bydls\pays\UsageMode\AliOrder;
+use bydls\pays\UsageMode\AliNotify;
 use bydls\pays\UsageMode\WechatPay;
 use bydls\pays\UsageMode\WechatRefund;
 use bydls\pays\UsageMode\WechatOrder;
+use bydls\pays\UsageMode\WechatNotify;
 use Symfony\Component\HttpFoundation\Response;
 
 class Pay
@@ -154,6 +156,16 @@ class Pay
         return $pay->close();
     }
 
+    /**获取并验证 支付宝回调参数
+     * @return Collection
+     * @author: hbh
+     * @Time: 2020/7/18   17:29
+     */
+    public static function ali_notify():Collection
+    {
+        $pay = new AliNotify();
+        return $pay->aliPcNotify();
+    }
 
     /**手机浏览器 微信支付
      * @param String $out_trade_no 交易订单号
@@ -276,5 +288,15 @@ class Pay
     {
         $pay = new WechatOrder($out_trade_no);
         return $pay->close();
+    }
+    /**获取并验证 微信回调参数
+     * @return Collection
+     * @author: hbh
+     * @Time: 2020/7/18   17:29
+     */
+    public static function wx_notify():Collection
+    {
+        $pay = new WechatNotify();
+        return $pay->wxPcNotify();
     }
 }
