@@ -12,14 +12,15 @@ class WechatConfig
 {
 
 
-    public static function wx_config(){
+    public static function wx_config()
+    {
         return [
             'appid' => WECHAT_APPID, // APP APPID
             'app_id' => WECHAT_APP_ID, // 公众号 APPID
             'miniapp_id' => WECHAT_MINIAPP_ID, // 小程序 APPID
             'mch_id' => WECHAT_MCH_ID,
             'key' => WECHAT_KEY,
-            'notify_url' => 'https://'.API_DOMAIN.'/api/pay/wxscan/notify', //异步回调地址
+            'notify_url' => PAY_NOTIF_URL, //异步回调地址
             'cert_client' => './cert/apiclient_cert.pem', // optional，退款等情况时用到
             'cert_key' => './cert/apiclient_key.pem',// optional，退款等情况时用到
 //            'log' => [ // optional
@@ -42,15 +43,16 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/6/29   15:27
      */
-    public static function  wx_scan_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_scan_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_scan/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
+        $config['notify_url'] = PAY_NOTIF_URL;
         return $config;
     }
 
@@ -59,9 +61,10 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/6/29   15:27
      */
-    public static function  wx_notify(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_notify()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_notify/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
@@ -75,15 +78,16 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/7/16   17:32
      */
-    public static function  wx_h5_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_h5_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_h5/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
+        $config['notify_url'] = PAY_NOTIF_URL;
         return $config;
     }
 
@@ -92,15 +96,16 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/7/17   15:17
      */
-    public static function  wx_app_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_app_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_app/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
+        $config['notify_url'] = PAY_NOTIF_URL;
         return $config;
     }
 
@@ -109,15 +114,16 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/7/17   15:19
      */
-    public static function  wx_mini_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_mini_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_mini/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
+        $config['notify_url'] = PAY_NOTIF_URL;
         return $config;
     }
 
@@ -126,25 +132,28 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/7/17   15:20
      */
-    public static function  wx_mp_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_mp_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_mp/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
-        $config['notify_url'] = '异步回调地址';
+        $config['notify_url'] = PAY_NOTIF_URL;
         return $config;
     }
+
     /**微信红包配置
      * @return array
      * @author: hbh
      * @Time: 2020/7/17   10:25
      */
-    public static function  wx_redpack_pay(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_redpack_pay()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_redpack/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
@@ -158,9 +167,10 @@ class WechatConfig
      * @author: hbh
      * @Time: 2020/7/17   10:43
      */
-    public static function  wx_refund(){
-        $config=self::wx_config();
-        $config['log']=[
+    public static function wx_refund()
+    {
+        $config = self::wx_config();
+        $config['log'] = [
             'file' => '../storage/logs/pay/wx_refund/.log',
             'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
             'type' => 'daily', // optional, 可选 daily.
