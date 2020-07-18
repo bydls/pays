@@ -9,7 +9,7 @@ namespace bydls\pays\UsageMode;
 
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\AliConfig;
+use bydls\pays\config\AliConfig;
 class AliOrder
 {
 

@@ -8,7 +8,7 @@
 namespace bydls\pays\UsageMode;
 
 use bydls\pays\Pay\Pay;
-use bydls\pays\WechatConfig;
+use bydls\pays\config\WechatConfig;
 
 class WechatNotify
 {

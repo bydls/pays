@@ -5,7 +5,7 @@
  * @Time: 2020/7/15   14:53
  */
 
-namespace bydls\pays;
+namespace bydls\pays\config;
 
 
 class AliConfig

@@ -13,9 +13,8 @@ use bydls\pays\UsageMode\AliPay;
 use bydls\pays\UsageMode\AliRefund;
 use bydls\pays\UsageMode\AliOrder;
 use bydls\pays\UsageMode\WechatPay;
-use bydls\pays\UsageMode\WechatPayRefund;
-use bydls\pays\UsageMode\WechatPayOrder;
-use bydls\pays\UsageMode;
+use bydls\pays\UsageMode\WechatRefund;
+use bydls\pays\UsageMode\WechatOrder;
 use Symfony\Component\HttpFoundation\Response;
 
 class Pay

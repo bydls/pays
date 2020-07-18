@@ -5,7 +5,7 @@
  * @Time: 2020/7/14   18:02
  */
 
-namespace bydls\pays;
+namespace bydls\pays\config;
 
 
 class WechatConfig
