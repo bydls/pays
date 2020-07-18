@@ -14,6 +14,7 @@ use bydls\pays\Pay\Gateways\Wechat;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\Listeners\LogSubscriber;
 use bydls\pays\Log\Logger;
+use bydls\pays\Log\Log;
 use bydls\pays\Pay\Config\Config;
 
 /**
@@ -87,7 +88,7 @@ class Pay
         $logger = new Logger();
         $logger->setConfig($config);
 
-        $logger->setLogger($logger);
+       Log::setInstance($logger);
     }
 
     /**

@@ -186,7 +186,7 @@ class Wechat implements GatewayApplicationInterface
     }
 
     /**退款
-     * @param String $order
+     * @param array $order
      * @return Collection
      * @throws GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
@@ -195,7 +195,7 @@ class Wechat implements GatewayApplicationInterface
      * @author: hbh
      * @Time: 2020/7/14   11:22
      */
-    public function refund(String $order): Collection
+    public function refund(array $order): Collection
     {
         $this->payload = Support::filterPayload($this->payload, $order, true);
 

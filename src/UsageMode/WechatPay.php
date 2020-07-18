@@ -23,7 +23,7 @@ class WechatPay
     private $trade_no;
 
 
-    public function __construct($total_fee, $trade_no, $body)
+    public function __construct($trade_no,$total_fee, $body)
     {
         $this->total_fee = $total_fee * 100;
         $this->trade_no = $trade_no;
