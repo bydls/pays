@@ -15,7 +15,7 @@ composer require bydls/pays
 
         调用：
         
-        use bydls/pays;
+        use bydls/pays/pay;
         
-        支付宝web端支付：pays::ali_web_pay('订单号', 0.01, '充值');
+        支付宝web端支付：pay::ali_web_pay('订单号', 0.01, '充值');
              
