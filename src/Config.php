@@ -19,15 +19,15 @@ use bydls\Utils\Str;
 class Config
 {
 
-    public static function __callStatic($method)
+    public static function __callStatic($method,$params)
     {
         $config = __NAMESPACE__ . '\\config\\' . Str::studlyCap($method).'Config';
 
         if (class_exists($config)) {
-            return new ($config);
+            return new $config($params);
         }
-
-        return new ('bydls\\pays\\UsageMode\\'.Str::studlyCap($method).'Config');
+        $config='bydls\\pays\\UsageMode\\'.Str::studlyCap($method).'Config';
+        return new $config($params);
 
     }
 
