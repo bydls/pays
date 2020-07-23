@@ -89,7 +89,7 @@ class AliPay
             'total_amount' =>  $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
-        $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->app($order);
+        $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->scan($order);
         if($pay->code=='10000'&&$pay->msg=='Success'){
             return $pay->code_url;
         }
