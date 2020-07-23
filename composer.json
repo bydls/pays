@@ -24,7 +24,8 @@
     "autoload": {
         "psr-4": {
             "bydls\\pays\\": "src/",
-            "bydls\\pays\\Controllers\\": "src/Controllers/"
+            "bydls\\pays\\Pay\\": "src/Pay/",
+            "bydls\\pays\\Log\\": "src/Log/"
         }
     },
     "repositories": {
