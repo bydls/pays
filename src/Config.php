@@ -21,7 +21,7 @@ class Config
 
     public static function __callStatic($method,$params)
     {
-        $config = __NAMESPACE__ . '\\config\\' . Str::studlyCap($method).'Config';
+        $config = __NAMESPACE__ . '\\localconfig\\' . Str::studlyCap($method).'Config';
 
         if (class_exists($config)) {
             return new $config($params);
