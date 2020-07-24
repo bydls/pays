@@ -52,30 +52,15 @@ class Pay
      */
     protected function create($method)
     {
-        $gateway = __NAMESPACE__ . '\\Gateways\\' . Str::studlyCap($method);
+        $gateway = __NAMESPACE__ . '\\GateWays\\' . Str::studlyCap($method);
 
         if (class_exists($gateway)) {
-            return self::make($gateway);
+            return new $gateway($this->config);
         }
 
         throw new Exceptions\InvalidGatewayException("Gateway [{$method}] Not Exists");
     }
 
-    /**
-     * @param $gateway
-     * @return GatewayApplicationInterface
-     * @throws Exceptions\InvalidGatewayException
-     */
-    protected function make($gateway): GatewayApplicationInterface
-    {
-        $app = new $gateway($this->config);
-
-        if ($app instanceof GatewayApplicationInterface) {
-            return $app;
-        }
-
-        throw new Exceptions\InvalidGatewayException("Gateway [{$gateway}] Must Be An Instance Of GatewayApplicationInterface");
-    }
 
     /**
      *Register log service
