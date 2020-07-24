@@ -25,9 +25,9 @@
         "psr-4": {
             "bydls\\pays\\": "src/",
             "bydls\\pays\\Pay\\": "src/Pay/",
-            "bydls\\pays\\Pay\\GateWays\\": "src/Pay/GateWays",
-            "bydls\\pays\\Pay\\GateWays\\Ali\\": "src/Pay/GateWays/Ali",
-            "bydls\\pays\\Pay\\GateWays\\Wechat\\": "src/Pay/GateWays/Wechat",
+            "bydls\\pays\\Pay\\GateWays\\": "src/Pay/GateWays/",
+            "bydls\\pays\\Pay\\GateWays\\Ali\\": "src/Pay/GateWays/Ali/",
+            "bydls\\pays\\Pay\\GateWays\\Wechat\\": "src/Pay/GateWays/Wechat/",
             "bydls\\pays\\Log\\": "src/Log/"
         }
     },
