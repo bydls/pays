@@ -23,10 +23,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "bydls\\pays\\": "src/",
-            "bydls\\pays\\Pay\\": "src/Pay/",
-            "bydls\\pays\\Pay\\GateWays\\": "src/Pay/GateWays",
-            "bydls\\pays\\Log\\": "src/Log/"
+            "": "src/"
         }
     },
     "repositories": {
