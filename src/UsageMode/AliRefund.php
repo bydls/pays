@@ -46,7 +46,7 @@ class AliRefund
             'out_request_no' => $this->out_request_no,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_refund())->refund($order);
-        if ($pay->code == '10000' && $pay->msg == 'Success') {
+        if ($pay->code == '10000') {
             return $pay;
         }
         return $pay->msg ?? null;
@@ -67,7 +67,7 @@ class AliRefund
             'out_request_no' => $this->out_request_no,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_refund())->find($order, 'refund');
-        if ($pay->code == '10000' && $pay->msg == 'Success') {
+        if ($pay->code == '10000') {
             return $pay;
         }
         return $pay->msg ?? null;

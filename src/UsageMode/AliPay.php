@@ -90,7 +90,7 @@ class AliPay
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->scan($order);
-        if($pay->code=='10000'&&$pay->msg=='Success'){
+        if($pay->code=='10000'){
             return $pay->code_url;
         }
         return '';
@@ -108,7 +108,7 @@ class AliPay
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_mini_pay())->mini($order);
-        if($pay->code=='10000'&&$pay->msg=='Success'){
+        if($pay->code=='10000'){
             return $pay;
         }
         return $pay->msg??null;
