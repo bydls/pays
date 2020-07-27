@@ -25,13 +25,14 @@ class Pay
      * @param String $out_trade_no 交易订单号
      * @param float $total_amount 要支付的金额 单位：元
      * @param String $subject 订单标题
+     * @param String $return_url 同步回调地址,默认取配置文件
      * @return Response
      * @author: hbh
      * @Time: 2020/7/17   13:46
      */
-    public static function ali_web_pay(String $out_trade_no, float $total_amount, String $subject): Response
+    public static function ali_web_pay(String $out_trade_no, float $total_amount, String $subject,String $return_url=''): Response
     {
-        $pay = new AliPay($out_trade_no, $total_amount, $subject);
+        $pay = new AliPay($out_trade_no, $total_amount, $subject,$return_url);
         return $pay->web();
     }
 
@@ -39,13 +40,14 @@ class Pay
      * @param String $out_trade_no 交易订单号
      * @param float $total_amount 要支付的金额 单位：元
      * @param String $subject 订单标题
+     * @param String $return_url 同步回调地址,默认取配置文件
      * @return Response
      * @author: hbh
      * @Time: 2020/7/17   13:47
      */
-    public static function ali_h5_pay(String $out_trade_no, float $total_amount, String $subject): Response
+    public static function ali_h5_pay(String $out_trade_no, float $total_amount, String $subject,String $return_url=''): Response
     {
-        $pay = new AliPay($out_trade_no, $total_amount, $subject);
+        $pay = new AliPay($out_trade_no, $total_amount, $subject,$return_url);
         return $pay->wap();
     }
 

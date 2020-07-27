@@ -21,12 +21,15 @@ class AliPay
     //交易订单号
     private $trade_no;
 
+    //同步回调地址 默认走配置
+    private $return_url;
 
-    public function __construct($trade_no, $total_amount, $subject)
+    public function __construct($trade_no, $total_amount, $subject,$return_url)
     {
         $this->total_amount = $total_amount;
         $this->trade_no = $trade_no;
         $this->subject = $subject;
+        $this->return_url = $return_url;
     }
 
 
@@ -42,6 +45,8 @@ class AliPay
             'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
+        $config=Config::Ali()->ali_pc_pay();
+        if($this->return_url) $config['return_url']=$this->return_url;
         $pay = Pay::Ali(Config::Ali()->ali_pc_pay())->web($order);
         return $pay->send();
     }
@@ -58,6 +63,8 @@ class AliPay
             'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
+        $config=Config::Ali()->ali_pc_pay();
+        if($this->return_url) $config['return_url']=$this->return_url;
         $pay = Pay::Ali(Config::Ali()->ali_h5_pay())->wap($order);
         return $pay->send();
     }

@@ -48,6 +48,8 @@ class AliConfig
             'type' => 'daily', // optional, 可选 daily.
             'max_file' => 31, // optional, 当 type 为 daily 时有效，默认 30 天
         ];
+        $config['notify_url'] =  'https://'.env('API_DOMAIN').'/api/pay/ali/notify'; //平台那边配置的
+        $config['return_url'] = 'https://'.env('API_DOMAIN').'/api/pay/ali/return';//平台那边配置的
         return $config;
     }
 
