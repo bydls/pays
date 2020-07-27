@@ -115,14 +115,4 @@ class AliPay
         }
         return $pay->msg ?? null;
     }
-
-    /**支付宝支付成功
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @author: hbh
-     * @Time: 2020/7/27   8:48
-     */
-    public function success()
-    {
-        return Pay::Ali(Config::Ali()->ali_config())->success();
-    }
 }
