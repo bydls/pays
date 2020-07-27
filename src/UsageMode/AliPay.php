@@ -9,6 +9,7 @@ namespace bydls\pays\UsageMode;
 
 use bydls\pays\Pay\Pay;
 use bydls\pays\Config;
+
 class AliPay
 {
     //要支付的金额 单位：元
@@ -21,11 +22,11 @@ class AliPay
     private $trade_no;
 
 
-    public function __construct($trade_no,$total_amount,$subject)
+    public function __construct($trade_no, $total_amount, $subject)
     {
-        $this->total_amount=$total_amount;
-        $this->trade_no= $trade_no;
-        $this->subject=$subject;
+        $this->total_amount = $total_amount;
+        $this->trade_no = $trade_no;
+        $this->subject = $subject;
     }
 
 
@@ -37,8 +38,8 @@ class AliPay
     public function web()
     {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_amount' =>  $this->total_amount, // **单位：元
+            'out_trade_no' => $this->trade_no,
+            'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_pc_pay())->web($order);
@@ -53,8 +54,8 @@ class AliPay
     public function wap()
     {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_amount' =>  $this->total_amount, // **单位：元
+            'out_trade_no' => $this->trade_no,
+            'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_h5_pay())->wap($order);
@@ -69,8 +70,8 @@ class AliPay
     public function app()
     {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_amount' =>  $this->total_amount, // **单位：元
+            'out_trade_no' => $this->trade_no,
+            'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_app_pay())->app($order);
@@ -85,12 +86,12 @@ class AliPay
     public function scan()
     {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_amount' =>  $this->total_amount, // **单位：元
+            'out_trade_no' => $this->trade_no,
+            'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->scan($order);
-        if($pay->code=='10000'){
+        if ($pay->code == '10000') {
             return $pay->code_url;
         }
         return '';
@@ -101,16 +102,27 @@ class AliPay
      * @author: hbh
      * @Time: 2020/7/17   13:55
      */
-    public function mini(){
+    public function mini()
+    {
         $order = [
-            'out_trade_no' =>$this->trade_no,
-            'total_amount' =>  $this->total_amount, // **单位：元
+            'out_trade_no' => $this->trade_no,
+            'total_amount' => $this->total_amount, // **单位：元
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_mini_pay())->mini($order);
-        if($pay->code=='10000'){
+        if ($pay->code == '10000') {
             return $pay;
         }
-        return $pay->msg??null;
+        return $pay->msg ?? null;
+    }
+
+    /**支付宝支付成功
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @author: hbh
+     * @Time: 2020/7/27   8:48
+     */
+    public function success()
+    {
+        return Pay::Ali(Config::Ali()->ali_config())->success();
     }
 }

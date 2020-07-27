@@ -22,7 +22,7 @@ class WechatPay
     private $trade_no;
 
 
-    public function __construct($trade_no,$total_fee, $body)
+    public function __construct($trade_no, $total_fee, $body)
     {
         $this->total_fee = $total_fee * 100;
         $this->trade_no = $trade_no;
@@ -129,5 +129,16 @@ class WechatPay
         $pay = Pay::wechat(Config::Wechat()->wx_app_pay())->app($order);
 
         return $pay->send();
+    }
+
+    /**微信支付成功
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
+     * @author: hbh
+     * @Time: 2020/7/27   8:49
+     */
+    public function success()
+    {
+        return Pay::wechat(Config::Wechat()->wx_config())->success();
     }
 }
