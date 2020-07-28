@@ -27,10 +27,10 @@ class WechatRefund
 
     public function __construct($out_trade_no, $refund_fee, $out_refund_no, $total_fee)
     {
-        $this->refund_fee = $refund_fee;
+        $this->refund_fee = $refund_fee* 100;
         $this->out_trade_no = $out_trade_no;
         $this->out_refund_no = $out_refund_no;
-        $this->total_fee = $total_fee;
+        $this->total_fee = $total_fee* 100;
     }
 
 
@@ -49,6 +49,7 @@ class WechatRefund
             'out_trade_no' => $this->out_trade_no,
             'refund_fee' => $this->refund_fee, // **单位：元
             'out_refund_no' => $this->out_refund_no,
+            'total_fee' => $this->total_fee,
         ];
         $pay = Pay::Wechat(Config::Wechat()->wx_refund())->refund($order);
         if ($pay->return_code == 'SUCCESS' && $pay->return_msg == 'OK') {

@@ -37,7 +37,7 @@ class WechatRedpack
     public function __construct($mch_billno, $total_amount, $send_name, $re_openid, $wishing, $act_name, $remark, $total_num)
     {
         $this->mch_billno = $mch_billno;
-        $this->total_amount = $total_amount;
+        $this->total_amount = $total_amount * 100;
         $this->send_name = $send_name;
         $this->re_openid = $re_openid;
         $this->wishing = $wishing;
