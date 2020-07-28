@@ -111,7 +111,7 @@ class WechatPay
         ];
         $pay = Pay::wechat(Config::Wechat()->wx_h5_pay())->wap($order);
 
-        return $pay->send();
+        return $pay;
     }
 
     /**APP 支付
@@ -128,6 +128,6 @@ class WechatPay
         ];
         $pay = Pay::wechat(Config::Wechat()->wx_app_pay())->app($order);
 
-        return $pay->send();
+        return $pay;
     }
 }

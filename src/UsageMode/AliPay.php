@@ -48,7 +48,7 @@ class AliPay
         $config=Config::Ali()->ali_pc_pay();
         if($this->return_url) $config['return_url']=$this->return_url;
         $pay = Pay::Ali($config)->web($order);
-        return $pay->send();
+        return $pay;
     }
 
     /**手机浏览器支付
@@ -66,7 +66,7 @@ class AliPay
         $config=Config::Ali()->ali_pc_pay();
         if($this->return_url) $config['return_url']=$this->return_url;
         $pay = Pay::Ali(Config::Ali()->ali_h5_pay())->wap($order);
-        return $pay->send();
+        return $pay;
     }
 
     /**APP 支付
@@ -82,7 +82,7 @@ class AliPay
             'subject' => $this->subject,
         ];
         $pay = Pay::Ali(Config::Ali()->ali_app_pay())->app($order);
-        return $pay->send();
+        return $pay;
     }
 
     /**获取支付宝支付二维码
