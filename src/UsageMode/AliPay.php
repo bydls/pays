@@ -99,7 +99,7 @@ class AliPay
         ];
         $pay = Pay::Ali(Config::Ali()->ali_scan_pay())->scan($order);
         if ($pay->code == '10000') {
-            return $pay->code_url;
+            return $pay->qr_code;
         }
         return '';
     }
