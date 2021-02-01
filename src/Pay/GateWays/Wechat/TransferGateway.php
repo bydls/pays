@@ -9,7 +9,7 @@ use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
 use bydls\pays\Pay\Gateways\Wechat;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 class TransferGateway extends Gateway
 {

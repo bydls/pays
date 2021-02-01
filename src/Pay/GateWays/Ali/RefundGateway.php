@@ -23,7 +23,7 @@ class RefundGateway extends Gateway
     /**退款没有支付
      * @param string $endpoint
      * @param array $payload
-     * @return \bydls\Utils\Collection|void
+     * @return \bydls\Support\Collection|void
      * @throws InvalidArgumentException
      * @author: hbh
      * @Time: 2020/7/14   13:39

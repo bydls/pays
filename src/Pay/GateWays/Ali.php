@@ -20,9 +20,9 @@ use bydls\pays\Pay\Exceptions\InvalidGatewayException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
 use bydls\pays\Pay\Gateways\Ali\Support;
 use bydls\pays\Pay\Config\Config;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
-use bydls\Utils\Str;
+use bydls\Support\Str;
 
 /**
  * @method Response   app(array $config)      APP 支付

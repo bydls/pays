@@ -4,7 +4,7 @@ namespace bydls\pays\Pay\Gateways\Ali;
 
 use bydls\pays\Pay\Contracts\GatewayInterface;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 abstract class Gateway implements GatewayInterface
 {

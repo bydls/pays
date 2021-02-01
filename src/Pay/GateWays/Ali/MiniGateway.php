@@ -5,7 +5,7 @@ namespace bydls\pays\Pay\Gateways\Ali;
 use bydls\pays\Pay\Events;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\Gateways\Ali;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 class MiniGateway extends Gateway
 {

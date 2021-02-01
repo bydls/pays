@@ -31,7 +31,7 @@ class AliRefund
 
 
     /**支付宝退款
-     * @return \bydls\Utils\Collection|mixed|null
+     * @return \bydls\Support\Collection|mixed|null
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidConfigException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException

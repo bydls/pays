@@ -4,7 +4,7 @@ namespace bydls\pays\Pay\Gateways\Wechat;
 
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Gateways\Wechat;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 class MiniGateway extends MpGateway
 {

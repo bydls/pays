@@ -9,7 +9,7 @@ namespace bydls\pays\Pay\Contracts;
 
 
 use Symfony\Component\HttpFoundation\Response;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 interface GatewayInterface
 {

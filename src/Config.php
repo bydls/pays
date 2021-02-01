@@ -10,7 +10,7 @@ namespace bydls\pays;
 
 use bydls\pays\UsageMode\AliConfig;
 use bydls\pays\UsageMode\WechatConfig;
-use bydls\Utils\Str;
+use bydls\Support\Str;
 
 /**
  * @method static AliConfig Ali() 支付宝

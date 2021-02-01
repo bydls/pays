@@ -8,7 +8,7 @@ use bydls\pays\Pay\Events\MethodCalled;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 abstract class Gateway implements GatewayInterface
 {

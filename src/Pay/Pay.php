@@ -8,7 +8,7 @@
 namespace bydls\pays\Pay;
 
 use bydls\pays\Pay\Contracts\GatewayApplicationInterface;
-use bydls\Utils\Str;
+use bydls\Support\Str;
 use bydls\pays\Pay\Gateways\Ali;
 use bydls\pays\Pay\Gateways\Wechat;
 use bydls\pays\Pay\Exceptions;

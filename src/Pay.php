@@ -8,7 +8,7 @@
 namespace bydls\pays;
 
 
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 use bydls\pays\UsageMode\AliPay;
 use bydls\pays\UsageMode\AliRefund;
 use bydls\pays\UsageMode\AliOrder;
