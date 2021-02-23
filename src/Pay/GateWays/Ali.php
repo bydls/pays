@@ -18,11 +18,11 @@ use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidConfigException;
 use bydls\pays\Pay\Exceptions\InvalidGatewayException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
-use bydls\pays\Pay\Gateways\Ali\Support;
+use bydls\pays\Pay\GateWays\Ali\Support;
 use bydls\pays\Pay\Config\Config;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
-use bydls\Utils\Str;
+use bydls\Support\Str;
 
 /**
  * @method Response   app(array $config)      APP 支付
@@ -222,7 +222,7 @@ class Ali implements GatewayApplicationInterface
      * @author: hbh
      * @Time: 2020/7/15   11:35
      */
-    public function verify($data = null, bool $refund = false): Collection
+    public function verify($data = null,  $refund = false): Collection
     {
         if (is_null($data)) {
             $request = Request::createFromGlobals();
@@ -256,7 +256,7 @@ class Ali implements GatewayApplicationInterface
      * @author: hbh
      * @Time: 2020/7/15   11:52
      */
-    public function find(String $order, string $type = 'wap'): Collection
+    public function find(String $order,  $type = 'wap'): Collection
     {
         $gateway = get_class($this).'\\'.Str::studlyCap($type).'Gateway';
 
@@ -379,7 +379,7 @@ class Ali implements GatewayApplicationInterface
      * @throws InvalidSignException
      * @throws InvalidArgumentException
      */
-    public function extend(string $method, callable $function, bool $now = true): ?Collection
+    public function extend(string $method, callable $function,  $now = true): ?Collection
     {
         if (!$now && !method_exists($this, $method)) {
             $this->extends[$method] = $function;
