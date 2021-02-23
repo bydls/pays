@@ -9,7 +9,7 @@ namespace bydls\pays\Pay\Config;
 
 
 
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 class Config extends Collection
 {

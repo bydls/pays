@@ -1,11 +1,11 @@
 <?php
 
-namespace bydls\pays\Pay\Gateways\Ali;
+namespace bydls\pays\Pay\GateWays\Ali;
 
-use bydls\pays\Pay\Gateways\Ali;
+use bydls\pays\Pay\GateWays\Ali;
 use bydls\pays\Pay\Events;
 use bydls\pays\Pay\Exceptions;
-use bydls\Utils\Collection;
+use bydls\Support\Collection;
 
 class TransferGateway extends Gateway
 {

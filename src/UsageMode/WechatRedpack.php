@@ -48,7 +48,7 @@ class WechatRedpack
     }
 
     /**商户红包
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @author: hbh
      * @Time: 2020/7/17   10:36
      */
@@ -69,7 +69,7 @@ class WechatRedpack
     }
 
     /**裂变红包
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @author: hbh
      * @Time: 2020/7/17   10:36
      */

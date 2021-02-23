@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Gateways\Wechat;
+namespace bydls\pays\Pay\GateWays\Wechat;
 
 use Symfony\Component\HttpFoundation\Request;
 use bydls\pays\Pay\Events;
@@ -8,8 +8,8 @@ use bydls\pays\Pay\Events\PayStarted;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
-use bydls\pays\Pay\Gateways\Wechat;
-use bydls\Utils\Collection;
+use bydls\pays\Pay\GateWays\Wechat;
+use bydls\Support\Collection;
 
 class TransferGateway extends Gateway
 {

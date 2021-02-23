@@ -50,14 +50,14 @@ class WechatPay
     }
 
     /**公众号支付
-     * @return \bydls\Utils\Collection|null
+     * @return \bydls\Support\Collection|null
      * @author: hbh
      * @Time: 2020/7/16   16:58
      */
 
     /**公众号支付
      * @param $openid
-     * @return \bydls\Utils\Collection|null|String
+     * @return \bydls\Support\Collection|null|String
      * @author: hbh
      * @Time: 2020/7/16   17:14
      */
@@ -78,7 +78,7 @@ class WechatPay
 
     /**小程序支付
      * @param $openid
-     * @return \bydls\Utils\Collection|null|String
+     * @return \bydls\Support\Collection|null|String
      * @author: hbh
      * @Time: 2020/7/16   17:18
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Traits;
+namespace bydls\pays\Pay\Traits;
 
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;

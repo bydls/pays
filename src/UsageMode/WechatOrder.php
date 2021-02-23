@@ -25,7 +25,7 @@ class WechatOrder
 
 
     /**查询订单
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
@@ -40,7 +40,7 @@ class WechatOrder
     }
 
     /**撤单
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
@@ -56,7 +56,7 @@ class WechatOrder
 
 
     /**关闭交易
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException
@@ -71,7 +71,7 @@ class WechatOrder
     }
 
     /**转账结果查询
-     * @return \bydls\Utils\Collection
+     * @return \bydls\Support\Collection
      * @throws \bydls\pays\Pay\Exceptions\GatewayException
      * @throws \bydls\pays\Pay\Exceptions\InvalidArgumentException
      * @throws \bydls\pays\Pay\Exceptions\InvalidSignException

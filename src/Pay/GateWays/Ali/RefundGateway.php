@@ -1,9 +1,9 @@
 <?php
 
-namespace bydls\pay\Pay\Gateways\Ali;
+namespace bydls\pay\Pay\GateWays\Ali;
 
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
-use bydls\pays\Pay\Gateways\Ali\Gateway;
+use bydls\pays\Pay\GateWays\Ali\Gateway;
 
 class RefundGateway extends Gateway
 {
@@ -23,7 +23,7 @@ class RefundGateway extends Gateway
     /**退款没有支付
      * @param string $endpoint
      * @param array $payload
-     * @return \bydls\Utils\Collection|void
+     * @return \bydls\Support\Collection|void
      * @throws InvalidArgumentException
      * @author: hbh
      * @Time: 2020/7/14   13:39

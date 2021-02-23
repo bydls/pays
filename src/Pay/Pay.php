@@ -8,11 +8,11 @@
 namespace bydls\pays\Pay;
 
 use bydls\pays\Pay\Contracts\GatewayApplicationInterface;
-use bydls\Utils\Str;
-use bydls\pays\Pay\Gateways\Ali;
-use bydls\pays\Pay\Gateways\Wechat;
+use bydls\Support\Str;
+use bydls\pays\Pay\GateWays\Ali;
+use bydls\pays\Pay\GateWays\Wechat;
 use bydls\pays\Pay\Exceptions;
-use bydls\pays\Pay\Listeners\LogSubscriber;
+use bydls\pays\Pay\Listeners\Listeners;
 use bydls\pays\Log\Logger;
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Config\Config;
@@ -83,6 +83,6 @@ class Pay
     {
         Events::setDispatcher(Events::createDispatcher());
 
-        Events::addSubscriber(new LogSubscriber());
+        Events::addSubscriber(new Listeners());
     }
 }
