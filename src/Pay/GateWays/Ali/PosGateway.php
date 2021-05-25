@@ -2,7 +2,7 @@
 
 namespace bydls\pays\Pay\GateWays\Ali;
 
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\GateWays\Ali;
 use bydls\Support\Collection;

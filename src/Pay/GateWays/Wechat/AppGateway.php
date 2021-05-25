@@ -5,7 +5,7 @@ namespace bydls\pays\Pay\GateWays\Wechat;
 use bydls\Utils\CodeUtil;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Events\PayStarted;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;

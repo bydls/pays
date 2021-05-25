@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Events;
+namespace bydls\pays\Pay\Events\Events;
 
 use Symfony\Contracts\EventDispatcher\Event as SymfonyEvent;
 

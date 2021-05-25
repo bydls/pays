@@ -4,7 +4,7 @@ namespace bydls\pays\Pay\GateWays\Ali;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\GateWays\Ali;
 

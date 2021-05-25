@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay;
+namespace bydls\pays\Pay\Events;
 
 use Exception;
 use Symfony\Component\EventDispatcher\EventDispatcher;

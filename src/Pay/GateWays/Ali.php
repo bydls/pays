@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use bydls\pays\Pay\Contracts\GatewayApplicationInterface;
 use bydls\pays\Pay\Contracts\GatewayInterface;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidConfigException;

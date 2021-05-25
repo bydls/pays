@@ -10,7 +10,7 @@ namespace bydls\pays\Pay\Listeners;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use bydls\pays\Log\Log;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 
 class Listeners implements EventSubscriberInterface
 {

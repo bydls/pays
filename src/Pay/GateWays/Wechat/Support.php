@@ -6,7 +6,7 @@ use bydls\pays\Pay\Events\ApiRequested;
 use bydls\pays\Pay\Events\SignFailed;
 use bydls\Utils;
 use Exception;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Exceptions\ResultException;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;

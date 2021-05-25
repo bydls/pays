@@ -3,7 +3,7 @@
 namespace bydls\pays\Pay\GateWays\Wechat;
 
 use bydls\pays\Pay\Contracts\GatewayInterface;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Events\MethodCalled;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;

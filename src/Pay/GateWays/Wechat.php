@@ -10,7 +10,7 @@ namespace bydls\pays\Pay\GateWays;
 
 use bydls\pays\Pay\Contracts\GatewayApplicationInterface;
 use bydls\pays\Pay\Contracts\GatewayInterface;
-use bydls\pays\Pay\Events;
+use bydls\pays\Pay\Events\Events;
 use bydls\pays\Pay\Events\MethodCalled;
 use bydls\pays\Pay\Events\PayStarting;
 use bydls\pays\Pay\Events\NotifyReceived;

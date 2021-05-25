@@ -16,6 +16,7 @@ use bydls\pays\Pay\Listeners\Listeners;
 use bydls\pays\Log\Logger;
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Config\Config;
+use bydls\pays\Pay\Events\Events;
 
 /**
  * @method static Ali ali(array $config) 支付宝
