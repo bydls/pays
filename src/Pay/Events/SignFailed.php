@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Events\Events;
+namespace bydls\pays\Pay\Events;
 
 class SignFailed extends Event
 {
