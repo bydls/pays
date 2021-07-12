@@ -4,6 +4,7 @@ namespace bydls\pays\Pay\GateWays\Wechat;
 
 use bydls\pays\Pay\Events\ApiRequested;
 use bydls\pays\Pay\Events\SignFailed;
+use bydls\pays\Pay\Traits\HasHttpRequest;
 use bydls\Utils;
 use Exception;
 use bydls\pays\Pay\Events;
@@ -15,7 +16,7 @@ use bydls\pays\Pay\GateWays\Wechat;
 use bydls\pays\Log\Log;
 use bydls\Support\Collection;
 use bydls\pays\Pay\Config\Config;
-use bydls\pays\Traits\HasHttpRequest;
+
 
 /**
  *
@@ -37,7 +38,7 @@ use bydls\pays\Traits\HasHttpRequest;
  */
 class Support
 {
-    use HasHttpRequest;
+   use HasHttpRequest;
 
     /**
      * Wechat gateway.
