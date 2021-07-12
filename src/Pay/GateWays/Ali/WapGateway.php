@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Gateways\Ali;
+namespace bydls\pays\Pay\GateWays\Ali;
 
 class WapGateway extends WebGateway
 {

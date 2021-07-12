@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Gateways\Wechat;
+namespace bydls\pays\Pay\GateWays\Wechat;
 
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 

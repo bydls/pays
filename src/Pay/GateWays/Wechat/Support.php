@@ -1,6 +1,6 @@
 <?php
 
-namespace bydls\pays\Pay\Gateways\Wechat;
+namespace bydls\pays\Pay\GateWays\Wechat;
 
 use bydls\pays\Pay\Events\ApiRequested;
 use bydls\pays\Pay\Events\SignFailed;
@@ -11,7 +11,7 @@ use bydls\pays\Pay\Exceptions\ResultException;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidArgumentException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
-use bydls\pays\Pay\Gateways\Wechat;
+use bydls\pays\Pay\GateWays\Wechat;
 use bydls\pays\Log\Log;
 use bydls\Support\Collection;
 use bydls\pays\Pay\Config\Config;

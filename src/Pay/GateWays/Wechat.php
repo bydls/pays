@@ -18,7 +18,7 @@ use bydls\pays\Pay\Events\SignFailed;
 use bydls\pays\Pay\Exceptions\GatewayException;
 use bydls\pays\Pay\Exceptions\InvalidGatewayException;
 use bydls\pays\Pay\Exceptions\InvalidSignException;
-use bydls\pays\Pay\Gateways\Wechat\Support;
+use bydls\pays\Pay\GateWays\Wechat\Support;
 use bydls\Utils\CodeUtil;
 use bydls\Support\Str;
 use bydls\Support\Collection;

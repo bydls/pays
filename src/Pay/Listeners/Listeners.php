@@ -12,7 +12,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use bydls\pays\Log\Log;
 use bydls\pays\Pay\Events;
 
-class LogSubscriber implements EventSubscriberInterface
+class Listeners implements EventSubscriberInterface
 {
     /**
      * Returns an array of event names this subscriber wants to listen to.
