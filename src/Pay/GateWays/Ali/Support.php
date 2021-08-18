@@ -3,6 +3,7 @@
 namespace bydls\pays\Pay\GateWays\Ali;
 
 use Exception;
+use bydls\pays\Traits\HasHttpRequest;
 use bydls\pays\Pay\Events;
 use bydls\pays\Pay\Exceptions;
 use bydls\pays\Pay\GateWays\Ali;
@@ -10,7 +11,6 @@ use bydls\pays\Log\Log;
 use bydls\Support\Collection;
 use bydls\pays\Pay\Config\Config;
 use bydls\Support\Str;
-use bydls\pays\Traits\HasHttpRequest;
 
 /**
  *
